@@ -34,4 +34,6 @@ public class ClientRestApplication {
 		
 		System.out.println(result);
 	}
+	
+	//postForObject para pasar una petición POST y devolver un JSON
 }
