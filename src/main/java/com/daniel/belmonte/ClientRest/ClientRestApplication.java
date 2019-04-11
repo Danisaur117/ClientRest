@@ -10,10 +10,19 @@ public class ClientRestApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ClientRestApplication.class, args);
+		getActors();
 	}
 
 	@Bean
-	public RestTemplate getRestTemplate() {
+	public static RestTemplate getRestTemplate() {
 		return new RestTemplate();
+	}
+	
+	public static void getActors() {
+		final String uri = "http://localhost:8080/api/actors";
+		RestTemplate restTemplate = getRestTemplate();
+		String result = restTemplate.getForObject(uri, String.class);
+		
+		System.out.println(result);
 	}
 }
