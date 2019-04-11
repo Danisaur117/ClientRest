@@ -10,7 +10,8 @@ public class ClientRestApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ClientRestApplication.class, args);
-		getActors();
+//		getActors();
+		getActor(1);
 	}
 
 	@Bean
@@ -20,6 +21,14 @@ public class ClientRestApplication {
 	
 	public static void getActors() {
 		final String uri = "http://localhost:8080/api/actors";
+		RestTemplate restTemplate = getRestTemplate();
+		String result = restTemplate.getForObject(uri, String.class);
+		
+		System.out.println(result);
+	}
+	
+	public static void getActor(int id) {
+		final String uri = "http://localhost:8080/api/actors/" + id;
 		RestTemplate restTemplate = getRestTemplate();
 		String result = restTemplate.getForObject(uri, String.class);
 		
